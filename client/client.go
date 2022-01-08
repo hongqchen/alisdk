@@ -84,6 +84,11 @@ func (s *CreateRepoBuildRuleResponse) SetHeaders(v map[string]*string) *CreateRe
 	return s
 }
 
+func (s *CreateRepoBuildRuleResponse) SetBody(v *CreateRepoBuildRuleResponseBody) *CreateRepoBuildRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateRepoWebhookResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
