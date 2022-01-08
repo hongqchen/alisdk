@@ -60,7 +60,15 @@ func (s *CreateRepoResponse) SetHeaders(v map[string]*string) *CreateRepoRespons
 }
 
 type CreateRepoBuildRuleResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+type CreateRepoBuildRuleResponseBody struct {
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRepoBuildRuleResponse) String() string {
