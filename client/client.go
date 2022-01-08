@@ -83,7 +83,7 @@ func (s *CreateRepoBuildRuleResponseBody) SetData(v *CreateRepoBuildRuleResponse
 }
 
 type CreateRepoBuildRuleResponseBodyData struct {
-	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	BuildRuleId *string `json:"buildRuleId,omitempty" xml:"buildRuleId,omitempty"`
 }
 
 func (s CreateRepoBuildRuleResponseBodyData) String() string {
