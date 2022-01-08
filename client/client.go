@@ -1071,11 +1071,11 @@ func (client *Client) CreateRepoWithOptions(headers map[string]*string, requestB
 	return _result, _err
 }
 
-func (client *Client) CreateRepoBuildRule(RepoNamespace *string, RepoName *string) (_result *CreateRepoBuildRuleResponse, _err error) {
+func (client *Client) CreateRepoBuildRule(RepoNamespace *string, RepoName *string, requestBody interface{}) (_result *CreateRepoBuildRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateRepoBuildRuleResponse{}
-	_body, _err := client.CreateRepoBuildRuleWithOptions(RepoNamespace, RepoName, headers, runtime)
+	_body, _err := client.CreateRepoBuildRuleWithOptions(RepoNamespace, RepoName, headers, requestBody, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1083,12 +1083,17 @@ func (client *Client) CreateRepoBuildRule(RepoNamespace *string, RepoName *strin
 	return _result, _err
 }
 
-func (client *Client) CreateRepoBuildRuleWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRepoBuildRuleResponse, _err error) {
+func (client *Client) CreateRepoBuildRuleWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string,
+	requestBody interface{}, runtime *util.RuntimeOptions) (_result *CreateRepoBuildRuleResponse, _err error) {
 	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
 	RepoName = openapiutil.GetEncodeParam(RepoName)
-	req := &openapi.OpenApiRequest{
+
+	reqTmp := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+
+	// 设置 request body
+	req := reqTmp.SetBody(requestBody)
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoBuildRule"),
 		Version:     tea.String("2016-06-07"),
