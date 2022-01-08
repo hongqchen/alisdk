@@ -66,10 +66,7 @@ type CreateRepoBuildRuleResponse struct {
 }
 
 type CreateRepoBuildRuleResponseBody struct {
-	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *CreateRepoBuildRuleResponseBodyData 	`json:"data,omitempty" xml:"data,omitempty"`
 }
 
 func (s CreateRepoBuildRuleResponseBody) String() string {
@@ -80,26 +77,27 @@ func (s CreateRepoBuildRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRepoBuildRuleResponseBody) SetBuildRuleId(v string) *CreateRepoBuildRuleResponseBody {
+func (s *CreateRepoBuildRuleResponseBody) SetData(v *CreateRepoBuildRuleResponseBodyData) *CreateRepoBuildRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+type CreateRepoBuildRuleResponseBodyData struct {
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+}
+
+func (s CreateRepoBuildRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepoBuildRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepoBuildRuleResponseBodyData) SetBuildRuleId(v string) *CreateRepoBuildRuleResponseBodyData {
 	s.BuildRuleId = &v
 	return s
 }
-
-func (s *CreateRepoBuildRuleResponseBody) SetCode(v string) *CreateRepoBuildRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateRepoBuildRuleResponseBody) SetIsSuccess(v bool) *CreateRepoBuildRuleResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *CreateRepoBuildRuleResponseBody) SetRequestId(v string) *CreateRepoBuildRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 
 func (s CreateRepoBuildRuleResponse) String() string {
 	return tea.Prettify(s)
