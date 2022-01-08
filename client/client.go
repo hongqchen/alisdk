@@ -1146,7 +1146,7 @@ func (client *Client) CreateRepoBuildRuleWithOptions(RepoNamespace *string, Repo
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoBuildRuleResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
