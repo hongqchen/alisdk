@@ -1,6 +1,7 @@
 package client
 
 import (
+	"fmt"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -1152,6 +1153,9 @@ func (client *Client) CreateRepoBuildRuleWithOptions(RepoNamespace *string, Repo
 	if _err != nil {
 		return _result, _err
 	}
+	fmt.Println("-------------")
+	fmt.Println(_body)
+	fmt.Println("-------------")
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
