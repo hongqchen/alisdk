@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -775,7 +776,8 @@ func (s *Image) SetTag(v string) *Image {
 }
 
 type GetRepoBuildRuleListResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRepoBuildRuleListBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRepoBuildRuleListResponse) String() string {
@@ -788,6 +790,89 @@ func (s GetRepoBuildRuleListResponse) GoString() string {
 
 func (s *GetRepoBuildRuleListResponse) SetHeaders(v map[string]*string) *GetRepoBuildRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetRepoBuildRuleListResponse) SetBody(v *GetRepoBuildRuleListBody) *GetRepoBuildRuleListResponse {
+	s.Body = v
+	return s
+}
+
+type GetRepoBuildRuleListBody struct {
+	Data *GetRepoBuildRuleListBodyData `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s GetRepoBuildRuleListBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoBuildRuleListBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoBuildRuleListBody) SetData(v *GetRepoBuildRuleListBodyData) *GetRepoBuildRuleListBody {
+	s.Data = v
+	return s
+}
+
+type GetRepoBuildRuleListBodyData struct {
+	BuildRules *[]GetRepoBuildRuleListBodyDataRules `json:"buildRules,omitempty" xml:"build_rules,omitempty"`
+}
+
+func (s GetRepoBuildRuleListBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoBuildRuleListBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoBuildRuleListBodyData) SetBuildRules(v *[]GetRepoBuildRuleListBodyDataRules) *GetRepoBuildRuleListBodyData {
+	s.BuildRules = v
+	return s
+}
+
+type GetRepoBuildRuleListBodyDataRules struct {
+	ImageTag           *string `json:"imageTag,omitempty" xml:"imageTag,omitempty"`
+	DockerfileLocation *string `json:"dockerfileLocation,omitempty" xml:"dockerfileLocation,omitempty"`
+	DockerfileName     *string `json:"dockerfileName,omitempty" xml:"dockerfileName,omitempty"`
+	PushType           *string `json:"pushType,omitempty" xml:"pushType,omitempty"`
+	PushName           *string `json:"pushName,omitempty" xml:"pushName,omitempty"`
+	BuildRuleID        *int    `json:"buildRuleId,omitempty" xml:"buildRuleId,omitempty"`
+}
+
+func (s GetRepoBuildRuleListBodyDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoBuildRuleListBodyDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoBuildRuleListBodyDataRules) SetImageTag(v string) *GetRepoBuildRuleListBodyDataRules {
+	s.ImageTag = &v
+	return s
+}
+
+func (s *GetRepoBuildRuleListBodyDataRules) SetDockerfileLocation(v string) *GetRepoBuildRuleListBodyDataRules {
+	s.DockerfileLocation = &v
+	return s
+}
+
+func (s *GetRepoBuildRuleListBodyDataRules) SetDockerfileName(v string) *GetRepoBuildRuleListBodyDataRules {
+	s.DockerfileName = &v
+	return s
+}
+func (s *GetRepoBuildRuleListBodyDataRules) SetPushType(v string) *GetRepoBuildRuleListBodyDataRules {
+	s.PushType = &v
+	return s
+}
+func (s *GetRepoBuildRuleListBodyDataRules) SetPushName(v string) *GetRepoBuildRuleListBodyDataRules {
+	s.PushName = &v
+	return s
+}
+func (s *GetRepoBuildRuleListBodyDataRules) SetBuildRuleID(v int) *GetRepoBuildRuleListBodyDataRules {
+	s.BuildRuleID = &v
 	return s
 }
 
@@ -2139,13 +2224,18 @@ func (client *Client) GetRepoBuildRuleListWithOptions(RepoNamespace *string, Rep
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoBuildRuleListResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
+
+	fmt.Println("--------")
+	fmt.Println(_body)
+	fmt.Println("--------")
+
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
