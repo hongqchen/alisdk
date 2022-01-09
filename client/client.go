@@ -68,7 +68,7 @@ type CreateRepoBuildRuleResponse struct {
 }
 
 type CreateRepoBuildRuleResponseBody struct {
-	Data *CreateRepoBuildRuleResponseBodyData 	`json:"data,omitempty" xml:"data,omitempty"`
+	Data *CreateRepoBuildRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty"`
 }
 
 func (s CreateRepoBuildRuleResponseBody) String() string {
@@ -455,7 +455,7 @@ func (s *GetRepoBuildListRequest) SetPageSize(v int32) *GetRepoBuildListRequest 
 }
 
 type GetRepoBuildListResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *ListRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
@@ -478,13 +478,7 @@ func (s *GetRepoBuildListResponse) SetBody(v *ListRepoBuildRecordResponseBody) *
 }
 
 type ListRepoBuildRecordResponseBody struct {
-	BuildRecords []*ListRepoBuildRecordResponseBodyBuildRecords `json:"BuildRecords,omitempty" xml:"BuildRecords,omitempty" type:"Repeated"`
-	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data *Data `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s ListRepoBuildRecordResponseBody) String() string {
@@ -495,114 +489,113 @@ func (s ListRepoBuildRecordResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoBuildRecordResponseBody) SetBuildRecords(v []*ListRepoBuildRecordResponseBodyBuildRecords) *ListRepoBuildRecordResponseBody {
-	s.BuildRecords = v
+func (s *ListRepoBuildRecordResponseBody) SetData(v *Data) *ListRepoBuildRecordResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListRepoBuildRecordResponseBody) SetCode(v string) *ListRepoBuildRecordResponseBody {
-	s.Code = &v
+type Data struct {
+	Page     *int32    `json:"page,omitempty" xml:"page,omitempty"`
+	Total    *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	PageSize *int32    `json:"pageSize,omitempty" xml:"page_size,omitempty"`
+	Builds   *[]Builds `json:"builds,omitempty" xml:"builds,omitempty" type:"Struct"`
+}
+
+func (s Data) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Data) GoString() string {
+	return s.String()
+}
+
+func (s *Data) SetPage(v int32) *Data {
+	s.Page = &v
 	return s
 }
 
-func (s *ListRepoBuildRecordResponseBody) SetIsSuccess(v bool) *ListRepoBuildRecordResponseBody {
-	s.IsSuccess = &v
+func (s *Data) SetTotal(v int32) *Data {
+	s.Total = &v
 	return s
 }
 
-func (s *ListRepoBuildRecordResponseBody) SetPageNo(v int32) *ListRepoBuildRecordResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBody) SetPageSize(v int32) *ListRepoBuildRecordResponseBody {
+func (s *Data) SetPageSize(v int32) *Data {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListRepoBuildRecordResponseBody) SetRequestId(v string) *ListRepoBuildRecordResponseBody {
-	s.RequestId = &v
+func (s *Data) SetBuilds(v *[]Builds) *Data {
+	s.Builds = v
 	return s
 }
 
-func (s *ListRepoBuildRecordResponseBody) SetTotalCount(v string) *ListRepoBuildRecordResponseBody {
-	s.TotalCount = &v
-	return s
+type Builds struct {
+	StartTime   *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	EndTime     *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Image       *Image  `json:"image,omitempty" xml:"image,omitempty" type:"Struct"`
+	BuildID     *string `json:"buildId,omitempty" xml:"buildId,omitempty"`
+	BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
 }
 
-type ListRepoBuildRecordResponseBodyBuildRecords struct {
-	BuildRecordId *string                                           `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	BuildStatus   *string                                           `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
-	EndTime       *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Image         *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	StartTime     *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s ListRepoBuildRecordResponseBodyBuildRecords) String() string {
+func (s Builds) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListRepoBuildRecordResponseBodyBuildRecords) GoString() string {
+func (s Builds) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetBuildRecordId(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
-	s.BuildRecordId = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetBuildStatus(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
-	s.BuildStatus = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetEndTime(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetImage(v *ListRepoBuildRecordResponseBodyBuildRecordsImage) *ListRepoBuildRecordResponseBodyBuildRecords {
-	s.Image = v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetStartTime(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
+func (s *Builds) SetStartTime(v int64) *Builds {
 	s.StartTime = &v
 	return s
 }
 
-type ListRepoBuildRecordResponseBodyBuildRecordsImage struct {
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+func (s *Builds) SetEndTime(v int64) *Builds {
+	s.EndTime = &v
+	return s
 }
 
-func (s ListRepoBuildRecordResponseBodyBuildRecordsImage) String() string {
+func (s *Builds) SetImage(v *Image) *Builds {
+	s.Image = v
+	return s
+}
+
+func (s *Builds) SetBuildID(v string) *Builds {
+	s.BuildID = &v
+	return s
+}
+
+func (s *Builds) SetBuildStatus(v string) *Builds {
+	s.BuildStatus = &v
+	return s
+}
+
+type Image struct {
+	RepoName      *string `json:"repoName,omitempty" xml:"repoName,omitempty"`
+	RepoNamespace *string `json:"repoNamespace,omitempty" xml:"repoNamespace,omitempty"`
+	Tag           *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s Image) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListRepoBuildRecordResponseBodyBuildRecordsImage) GoString() string {
+func (s Image) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetImageTag(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
-	s.ImageTag = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoId(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
-	s.RepoId = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoName(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
+func (s *Image) SetRepoName(v string) *Image {
 	s.RepoName = &v
 	return s
 }
 
-func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoNamespaceName(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
-	s.RepoNamespaceName = &v
+func (s *Image) SetRepoNamespace(v string) *Image {
+	s.RepoNamespace = &v
+	return s
+}
+
+func (s *Image) SetTag(v string) *Image {
+	s.Tag = &v
 	return s
 }
 
