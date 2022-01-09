@@ -3,6 +3,7 @@
 package client
 
 import (
+	"fmt"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -455,6 +456,7 @@ func (s *GetRepoBuildListRequest) SetPageSize(v int32) *GetRepoBuildListRequest 
 
 type GetRepoBuildListResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRepoBuildListResponse) String() string {
@@ -467,6 +469,140 @@ func (s GetRepoBuildListResponse) GoString() string {
 
 func (s *GetRepoBuildListResponse) SetHeaders(v map[string]*string) *GetRepoBuildListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetRepoBuildListResponse) SetBody(v *ListRepoBuildRecordResponseBody) *GetRepoBuildListResponse {
+	s.Body = v
+	return s
+}
+
+type ListRepoBuildRecordResponseBody struct {
+	BuildRecords []*ListRepoBuildRecordResponseBodyBuildRecords `json:"BuildRecords,omitempty" xml:"BuildRecords,omitempty" type:"Repeated"`
+	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRepoBuildRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepoBuildRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetBuildRecords(v []*ListRepoBuildRecordResponseBodyBuildRecords) *ListRepoBuildRecordResponseBody {
+	s.BuildRecords = v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetCode(v string) *ListRepoBuildRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetIsSuccess(v bool) *ListRepoBuildRecordResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetPageNo(v int32) *ListRepoBuildRecordResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetPageSize(v int32) *ListRepoBuildRecordResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetRequestId(v string) *ListRepoBuildRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetTotalCount(v string) *ListRepoBuildRecordResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRepoBuildRecordResponseBodyBuildRecords struct {
+	BuildRecordId *string                                           `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	BuildStatus   *string                                           `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
+	EndTime       *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Image         *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	StartTime     *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListRepoBuildRecordResponseBodyBuildRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepoBuildRecordResponseBodyBuildRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetBuildRecordId(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
+	s.BuildRecordId = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetBuildStatus(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
+	s.BuildStatus = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetEndTime(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetImage(v *ListRepoBuildRecordResponseBodyBuildRecordsImage) *ListRepoBuildRecordResponseBodyBuildRecords {
+	s.Image = v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetStartTime(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
+	s.StartTime = &v
+	return s
+}
+
+type ListRepoBuildRecordResponseBodyBuildRecordsImage struct {
+	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+}
+
+func (s ListRepoBuildRecordResponseBodyBuildRecordsImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepoBuildRecordResponseBodyBuildRecordsImage) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetImageTag(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
+	s.ImageTag = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoId(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
+	s.RepoId = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoName(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoNamespaceName(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
+	s.RepoNamespaceName = &v
 	return s
 }
 
@@ -1795,10 +1931,14 @@ func (client *Client) GetRepoBuildListWithOptions(RepoNamespace *string, RepoNam
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoBuildListResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
+
+	fmt.Println("-----------")
+	fmt.Println(_body)
+	fmt.Println("-----------")
 	if _err != nil {
 		return _result, _err
 	}
