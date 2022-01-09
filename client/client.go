@@ -455,7 +455,7 @@ func (s *GetRepoResponseBody) SetData(v *GetRepoData) *GetRepoResponseBody {
 }
 
 type GetRepoData struct {
-	Repo *GetRepoDataDetail `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Repo *GetRepoDataDetail `json:"repo,omitempty" xml:"repo,omitempty" type:"Struct"`
 }
 
 func (s GetRepoData) String() string {
