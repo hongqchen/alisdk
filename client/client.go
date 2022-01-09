@@ -414,7 +414,8 @@ func (s *GetRegionListResponse) SetHeaders(v map[string]*string) *GetRegionListR
 }
 
 type GetRepoResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRepoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRepoResponse) String() string {
@@ -427,6 +428,181 @@ func (s GetRepoResponse) GoString() string {
 
 func (s *GetRepoResponse) SetHeaders(v map[string]*string) *GetRepoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetRepoResponse) SetBody(v *GetRepoResponseBody) *GetRepoResponse {
+	s.Body = v
+	return s
+}
+
+type GetRepoResponseBody struct {
+	Data *GetRepoData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s GetRepoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoResponseBody) SetData(v *GetRepoData) *GetRepoResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetRepoData struct {
+	Repo *GetRepoDataDetail `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s GetRepoData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoData) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoData) SetData(v *GetRepoDataDetail) *GetRepoData {
+	s.Repo = v
+	return s
+}
+
+type GetRepoDataDetail struct {
+	Summary           *string         `json:"summary,omitempty" xml:"summary,omitempty"`
+	RepoDomainList    *RepoDomainList `json:"repoDomainList,omitempty" xml:"repoDomainList,omitempty" type:"Struct"`
+	RepoAuthorizeType *string         `json:"repoAuthorizeType,omitempty" xml:"repoAuthorizeType,omitempty"`
+	Downloads         *int            `json:"downloads,omitempty" xml:"downloads,omitempty"`
+	RegionID          *string         `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RepoName          *string         `json:"repoName,omitempty" xml:"repoName,omitempty"`
+	RepoNamespace     *string         `json:"repoNamespace,omitempty" xml:"repoNamespace,omitempty"`
+	RepoType          *string         `json:"repoType,omitempty" xml:"repoType,omitempty"`
+	RepoID            *int            `json:"repoId,omitempty" xml:"repoId,omitempty"`
+	RepoStatus        *string         `json:"repoStatus,omitempty" xml:"repoStatus,omitempty"`
+	RepoBuildType     *string         `json:"repoBuildType,omitempty" xml:"repoBuildType,omitempty"`
+	GmtCreate         *int64          `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	RepoOriginType    *string         `json:"repoOriginType,omitempty" xml:"repoOriginType,omitempty"`
+	GmtModified       *int64          `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Stars             *int            `json:"stars,omitempty" xml:"stars,omitempty"`
+	Logo              *string         `json:"logo,omitempty" xml:"logo,omitempty"`
+}
+
+func (s GetRepoDataDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoDataDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoDataDetail) SetSummary(v string) *GetRepoDataDetail {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoDomainList(v *RepoDomainList) *GetRepoDataDetail {
+	s.RepoDomainList = v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoAuthorizeType(v string) *GetRepoDataDetail {
+	s.RepoAuthorizeType = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetDownloads(v int) *GetRepoDataDetail {
+	s.Downloads = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRegionID(v string) *GetRepoDataDetail {
+	s.RegionID = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoName(v string) *GetRepoDataDetail {
+	s.RepoName = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoID(v int) *GetRepoDataDetail {
+	s.RepoID = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoType(v string) *GetRepoDataDetail {
+	s.RepoType = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoStatus(v string) *GetRepoDataDetail {
+	s.RepoStatus = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoBuildType(v string) *GetRepoDataDetail {
+	s.RepoBuildType = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetGmtCreate(v int64) *GetRepoDataDetail {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoNamespace(v string) *GetRepoDataDetail {
+	s.RepoNamespace = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetRepoOriginType(v string) *GetRepoDataDetail {
+	s.RepoOriginType = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetGmtModified(v int64) *GetRepoDataDetail {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetStars(v int) *GetRepoDataDetail {
+	s.Stars = &v
+	return s
+}
+
+func (s *GetRepoDataDetail) SetLogo(v string) *GetRepoDataDetail {
+	s.Logo = &v
+	return s
+}
+
+type RepoDomainList struct {
+	Internal *string `json:"internal,omitempty" xml:"internal,omitempty"`
+	Public   *string `json:"public,omitempty" xml:"public,omitempty"`
+	Vpc      *string `json:"vpc,omitempty" xml:"vpc,omitempty"`
+}
+
+func (s RepoDomainList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepoDomainList) GoString() string {
+	return s.String()
+}
+
+func (s *RepoDomainList) SetInternal(v string) *RepoDomainList {
+	s.Internal = &v
+	return s
+}
+
+func (s *RepoDomainList) SetPublic(v string) *RepoDomainList {
+	s.Public = &v
+	return s
+}
+
+func (s *RepoDomainList) SetVpc(v string) *RepoDomainList {
+	s.Vpc = &v
 	return s
 }
 
@@ -1871,7 +2047,7 @@ func (client *Client) GetRepoWithOptions(RepoNamespace *string, RepoName *string
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
