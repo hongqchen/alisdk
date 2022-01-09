@@ -2053,10 +2053,6 @@ func (client *Client) GetRepoWithOptions(RepoNamespace *string, RepoName *string
 	_result = &GetRepoResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 
-	fmt.Println("------")
-	fmt.Println(_body)
-	fmt.Println("------")
-
 	if _err != nil {
 		return _result, _err
 	}
