@@ -1,4 +1,4 @@
-module github.com/chenhqchn/alisdk
+module github.com/hongqchen/alisdk
 
 go 1.17
 
